@@ -1,3 +1,3 @@
 window.onload = function () {
-  document.querySelector('#input')
+  document.querySelector('#input').value = "Hello World!";
 };
