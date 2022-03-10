@@ -12,6 +12,8 @@ const usersRoute = require("./routes/users.route");
 
 const app = express();
 
+app.set("view engine", "pug");
+
 app.use(express.json());
 
 app.use(
@@ -52,6 +54,8 @@ app.get("/orders", async (req, res) => {
   const orders = await Orders.find({}).populate("user", "username");
   res.json(orders);
 });
+
+app.get("/view", (req, res) => res.render("index"));
 
 app.listen(process.env.PORT, () => {
   console.log(`Server is running on port ${process.env.PORT}`);
