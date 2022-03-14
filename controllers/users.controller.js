@@ -15,11 +15,11 @@ async function getMe(req, res, next) {
   try {
     const user = await Users.findOne(
       {
-        username: req.user.username,
+        _id: "622c5af2c3ac40f44652572f",
       },
       "__id username name"
     );
-    console.log(user.fullName);
+    console.log(user);
     res.json(user);
   } catch (err) {
     console.log(err);
@@ -53,9 +53,9 @@ async function deleteMe(req, res, next) {
 async function createOrder(req, res, next) {
   try {
     const { products } = req.body;
-    console.log(req.user)
     const order = new Orders({
       products,
+      // eslint-disable-next-line no-underscore-dangle
       user: req.user._id,
     });
     await order.save();
